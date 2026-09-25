@@ -28,7 +28,7 @@
 ## 開発・テストの実行方法
 - 前提：Node.js 22.12 以上（`.nvmrc`）、pnpm 9.14.2（`package.json` の `packageManager`）
 - `pnpm install` — 依存の導入（better-sqlite3 のネイティブビルドを含む）
-- `pnpm dev` — 画面（Vite、http://localhost:5173）とサーバー（Hono、http://localhost:3000）を同時に起動する。画面の `/api` へのリクエストは Vite の proxy でサーバーへ転送する
+- `pnpm dev` — 画面（Vite、http://localhost:5173）とサーバー（Hono、http://127.0.0.1:3000。127.0.0.1 だけで待ち受ける）を同時に起動する。画面の `/api` へのリクエストは Vite の proxy でサーバーへ転送する
 - `pnpm test` — テスト（`vitest run`。`vitest` だけだと監視モードで終わらないため）
 - `pnpm lint` — lint と format の検査（Biome）。`pnpm format` で自動修正する
 - `pnpm typecheck` — 型チェック（`tsc --noEmit`）
