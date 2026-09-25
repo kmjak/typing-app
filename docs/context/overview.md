@@ -33,7 +33,7 @@
 - `pnpm lint` — lint と format の検査（Biome）。`pnpm format` で自動修正する
 - `pnpm typecheck` — 型チェック（`tsc --noEmit`）
 - 記録の SQLite のファイルは `data/typing.db`（git 管理外）
-- CI の workflow は未作成。環境構築のチケット（#1）のマージ後に `/flow init` を再実行して作る
+- CI（`.github/workflows/flow-ci.yml`）が、PR と main への push で `pnpm test`・`pnpm lint`・`pnpm typecheck` を実行する（`docs/flow.config.yml` の `commands` と同じ順）
 
 ## 未決事項
 - 直前のキーとの組み合わせによる苦手の分析（「どのキーの後だと苦手か」）。基本の集計ができた後に、別のチケットで追加する。記録には最初から直前のキーを残しておく。
