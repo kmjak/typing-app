@@ -26,9 +26,15 @@
 - テスト：Vitest
 
 ## 開発・テストの実行方法
-- 環境構築のチケットで決める。テストは Vitest を使い、`package.json` の `test` スクリプトは `vitest run` にする（`vitest` だけだと監視モードで終わらないため）。
+- 前提：Node.js 22.12 以上（`.nvmrc`）、pnpm 9.14.2（`package.json` の `packageManager`）
+- `pnpm install` — 依存の導入（better-sqlite3 のネイティブビルドを含む）
+- `pnpm dev` — 画面（Vite、http://localhost:5173）とサーバー（Hono、http://127.0.0.1:3000。127.0.0.1 だけで待ち受ける）を同時に起動する。画面の `/api` へのリクエストは Vite の proxy でサーバーへ転送する
+- `pnpm test` — テスト（`vitest run`。`vitest` だけだと監視モードで終わらないため）
+- `pnpm lint` — lint と format の検査（Biome）。`pnpm format` で自動修正する
+- `pnpm typecheck` — 型チェック（`tsc --noEmit`）
+- 記録の SQLite のファイルは `data/typing.db`（git 管理外）
+- CI の workflow は未作成。環境構築のチケット（#1）のマージ後に `/flow init` を再実行して作る
 
 ## 未決事項
 - 直前のキーとの組み合わせによる苦手の分析（「どのキーの後だと苦手か」）。基本の集計ができた後に、別のチケットで追加する。記録には最初から直前のキーを残しておく。
 - お題の単語リストの中身と件数（リポジトリに同梱する想定）
-- 起動・テスト・lint のコマンド（環境構築のチケットで決め、`docs/flow.config.yml` の `commands` にも追加する。あわせて `/flow init` を再実行して CI の workflow を作る）

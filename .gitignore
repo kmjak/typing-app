@@ -1,2 +1,5 @@
 docs/flow/
 docs/tickets/
+node_modules/
+dist/
+data/
