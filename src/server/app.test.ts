@@ -11,4 +11,14 @@ describe("createApp", () => {
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ status: "ok", db: "ok" });
   });
+
+  it("GET /api/health は DB に問い合わせられないとき 500 を返す", async () => {
+    const db = openDatabase(":memory:");
+    db.close();
+    const app = createApp(db);
+
+    const res = await app.request("/api/health");
+
+    expect(res.status).toBe(500);
+  });
 });
