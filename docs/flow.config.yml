@@ -1,6 +1,9 @@
 # /flow settings (shared, committed)
 language: ja
-commands: {}
+commands:
+  test: pnpm test
+  lint: pnpm lint
+  typecheck: pnpm typecheck
 ticket:
   tracker: github
   prefix: T
