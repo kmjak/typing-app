@@ -1,0 +1,31 @@
+# flow-command template: flow-ci (v1). A starting point that /flow init
+# fills in with the user: the setup steps depend on the project, the verify
+# steps are docs/flow.config.yml `commands` in the same order, so CI and
+# /flow dev verify the same things.
+name: flow-ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: test
+        run: pnpm test
+      - name: lint
+        run: pnpm lint
+      - name: typecheck
+        run: pnpm typecheck
