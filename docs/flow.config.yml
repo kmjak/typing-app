@@ -1,0 +1,13 @@
+# /flow settings (shared, committed)
+language: ja
+commands: {}
+ticket:
+  tracker: github
+  prefix: T
+  pad: 6
+repository:
+  host: github
+  default_branch: main
+review:
+  required: false
+gates: [approach, plan, pr]
